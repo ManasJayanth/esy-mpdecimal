@@ -1,0 +1,23 @@
+{
+  "name": "esy-mpdecimal",
+  "version": "4.0.0",
+  "description": "mpdecimal packaged for esy",
+  "license": "BSD-2-Clause",
+  "source": "https://www.bytereef.org/software/mpdecimal/releases/mpdecimal-4.0.0.tar.gz#sha256:942445c3245b22730fd41a67a7c5c231d11cb1b9936b9c0f76334fb7d0b4468c",
+  "override": {
+    "build": [
+      "./configure --prefix=#{self.install} #{os == 'windows'? '--host x86_64-w64-mingw32': ''}",
+      "make -j#{self.jobs}"
+    ],
+    "install": "make install",
+    "buildsInSource": true,
+    "exportedEnv": {
+      "//": "This is just an example",
+      "PKG_CONFIG_PATH": {
+        "val": "#{self.lib / 'pkgconfig'}",
+        "scope": "global"
+      }
+    },
+    "dependencies": {}
+  }
+}

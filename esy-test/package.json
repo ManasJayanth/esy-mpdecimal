@@ -1,0 +1,11 @@
+{
+  "esy": {
+    "build": [
+      "#{os == 'windows' ? 'x86_64-w64-mingw32-':''}gcc test.c -I#{esy-mpdecimal.install / 'include'} -L#{esy-mpdecimal.lib} -lmpdec -o test",
+      "env LD_LIBRARY_PATH=#{esy-mpdecimal.lib} DYLD_LIBRARY_PATH=#{esy-mpdecimal.lib} ./test"
+    ]
+  },
+  "dependencies": {
+    "esy-mpdecimal": "*"
+  }
+}
